@@ -8,7 +8,7 @@ using namespace std;
 
 void printHeader(ofstream & destinationFile);
 
-void main()
+int main(void)
 {
 	ifstream sourceFile("SenseData.txt", ios::in);
 	ofstream destinationFile("ResultData.txt", ios::out);
@@ -47,7 +47,7 @@ void main()
 	sourceFile.close();
 	destinationFile.close();
 
-	return;
+	return 0;
 }
 void printHeader(ofstream & destinationFile)
 {
