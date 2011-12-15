@@ -84,3 +84,49 @@ double PoseCalculator::CalculateNewExactHeading(Pose initialPose, double leftWhe
 	return newHeading;
 }
 
+double PoseCalculator::CalculateAverageDisplacement(Wheel leftWheel, int accumulatedTicksLeftWheel,
+		Wheel rightWheel, int accumulatedTicksRightWheel)
+{
+	double averageDisplacement;
+
+	averageDisplacement = (CalculateWheelDisplacement(rightWheel,accumulatedTicksRightWheel)
+			- CalculateWheelDisplacement(leftWheel, accumulatedTicksLeftWheel))
+			/ 2;
+
+	return averageDisplacement;
+}
+
+double PoseCalculator::CalculateNewApproximateYLocation(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+		Wheel rightWheel, int accumulatedTicksRightWheel)
+{
+	double newYLocation;
+
+	newYLocation = CalculateAverageDisplacement(leftWheel, accumulatedTicksLeftWheel, rightWheel, accumulatedTicksRightWheel)
+			* sin(initialPose.headingInRadians) + initialPose.location.y;
+
+	return newYLocation;
+}
+
+double PoseCalculator::CalculateNewApproximateXLocation(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+		Wheel rightWheel, int accumulatedTicksRightWheel)
+{
+	double newXLocation;
+
+	newXLocation = CalculateAverageDisplacement(leftWheel, accumulatedTicksLeftWheel, rightWheel, accumulatedTicksRightWheel)
+			* cos(initialPose.headingInRadians) + initialPose.location.x;
+
+	return newXLocation;
+}
+
+double PoseCalculator::CalculateNewApproximateHeader(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+		Wheel rightWheel, int accumulatedTicksRightWheel, double distanceBetweenWheels)
+{
+	double newHeader;
+
+	newHeader = (CalculateWheelDisplacement(rightWheel, accumulatedTicksRightWheel)
+				- CalculateWheelDisplacement(leftWheel, accumulatedTicksLeftWheel))
+				/ distanceBetweenWheels + initialPose.headingInRadians;
+
+	return newHeader;
+}
+

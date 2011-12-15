@@ -40,6 +40,18 @@ private:
 	static double CalculateNewExactHeading(Pose initialPose, double leftWheelVelocity, double rightWheelVelocity,
 		double timePassedSinceLastCheck, double distanceBetweenWheels);	
 	
-	//TODO: Approximation Functions for microcontrollers, Driver program, Comparison functions between Exact and approximate calculations
+	static double CalculateAverageDisplacement(Wheel leftWheel, int accumulatedTicksLeftWheel,
+			Wheel rightWheel, int accumulatedTicksRightWheel);
+
+	static double CalculateNewApproximateYLocation(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+			Wheel rightWheel, int accumulatedTicksRightWheel);
+
+	static double CalculateNewApproximateXLocation(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+			Wheel rightWheel, int accumulatedTicksRightWheel);
+
+	static double CalculateNewApproximateHeader(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+			Wheel rightWheel, int accumulatedTicksRightWheel, double distanceBetweenWheels);
+
+
 };
 #endif
