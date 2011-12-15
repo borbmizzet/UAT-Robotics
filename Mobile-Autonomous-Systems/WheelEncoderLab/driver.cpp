@@ -5,6 +5,7 @@ using namespace std;
 
 #include "Point.h"
 #include "Pose.h"
+#include "Wheel.h"
 #include "PoseCalculator.h"
 
 void exactCalculations(double distanceBetweenWheels, Wheel bothWheels, Pose currentPose);
