@@ -22,6 +22,21 @@ Pose PoseCalculator::CalculateNewExactPose(Pose initialPose, Wheel leftWheel, Wh
 	return newPose;
 }
 
+Pose PoseCalculator::CalculateNewApproximatePose(Pose initialPose, Wheel leftWheel, Wheel rightWheel,
+		int accumulatedTicksOnLeftWheel, int accumulatedTicksOnRightWheel, double distanceBetweenWheels)
+{
+	Pose newPose;
+
+	newPose.location.x = CalculateNewApproximateXLocation(initialPose, leftWheel, accumulatedTicksOnLeftWheel,
+		rightWheel, accumulatedTicksOnRightWheel);
+	newPose.location.y = CalculateNewApproximateYLocation(initialPose, leftWheel, accumulatedTicksOnLeftWheel,
+			rightWheel, accumulatedTicksOnRightWheel);
+	newPose.headingInRadians = CalculateNewApproximateHeading(initialPose, leftWheel, accumulatedTicksOnLeftWheel,
+			rightWheel, accumulatedTicksOnRightWheel, distanceBetweenWheels);;
+
+	return newPose;
+}
+
 double PoseCalculator::CalculateWheelVelocity(Wheel wheel, int accumulatedTransitionsSinceLastCheck,
 		double timePassedSinceLastCheck)
 {
@@ -118,7 +133,7 @@ double PoseCalculator::CalculateNewApproximateXLocation(Pose initialPose, Wheel 
 	return newXLocation;
 }
 
-double PoseCalculator::CalculateNewApproximateHeader(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+double PoseCalculator::CalculateNewApproximateHeading(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
 		Wheel rightWheel, int accumulatedTicksRightWheel, double distanceBetweenWheels)
 {
 	double newHeader;

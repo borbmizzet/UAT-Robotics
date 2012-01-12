@@ -24,6 +24,9 @@ public:
 		int accumulatedTicksOnLeftWheel, int accumulatedTicksOnRightWheel, double timePassedSinceLastCheck,
 		double distanceBetweenWheels);
 
+	static Pose CalculateNewApproximatePose(Pose initialPose, Wheel leftWheel, Wheel rightWheel,
+		int accumulatedTicksOnLeftWheel, int accumulatedTicksOnRightWheel, double distanceBetweenWheels);
+
 private:	
 
 	static double CalculateWheelVelocity(Wheel wheel, int accumulatedTicksSinceLastCheck,
@@ -49,7 +52,7 @@ private:
 	static double CalculateNewApproximateXLocation(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
 			Wheel rightWheel, int accumulatedTicksRightWheel);
 
-	static double CalculateNewApproximateHeader(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
+	static double CalculateNewApproximateHeading(Pose initialPose, Wheel leftWheel, int accumulatedTicksLeftWheel,
 			Wheel rightWheel, int accumulatedTicksRightWheel, double distanceBetweenWheels);
 
 
