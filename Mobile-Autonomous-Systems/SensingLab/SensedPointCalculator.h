@@ -1,8 +1,6 @@
 #ifndef SENSEDPOINTCALCULATOR_H
 #define SENSEDPOINTCALCULATOR_H
 
-#pragma once
-
 #include <cmath>
 using std::sin;
 using std::cos;

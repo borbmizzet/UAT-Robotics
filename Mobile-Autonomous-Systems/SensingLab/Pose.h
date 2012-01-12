@@ -1,8 +1,6 @@
 #ifndef POSE_H
 #define POSE_H
 
-#pragma once
-
 #include "Point.h"
 
 struct Pose
